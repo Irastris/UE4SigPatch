@@ -6,5 +6,5 @@ Clone the repository and compile the solution in Visual Studio 2022. Prebuilt re
 
 ### Supported Games:
  - Bramble: The Mountain King
- - Mortal Kombat 1
+ - Mortal Kombat 1 (by [@thethiny](https://github.com/thethiny))
  - Sifu
