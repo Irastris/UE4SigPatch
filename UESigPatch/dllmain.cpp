@@ -1,8 +1,13 @@
 #include "pch.h"
+
 #include "patches.h"
+#include "utils.h"
 #include <string>
 
-using namespace Patches;
+constexpr const char* ASI_VERSION = "1.0.1";
+
+bool bPauseOnStart = false;
+bool bShowConsole = false;
 
 enum eSupportedGames {
 	eGameBramble,
@@ -18,6 +23,28 @@ eSupportedGames GetEnumeratorFromProcessName(std::string const& sProcessName) {
 	return eUnsupportedGame;
 }
 
+void CreateConsole()
+{
+	FreeConsole();
+	AllocConsole();
+
+	FILE* fNull;
+	freopen_s(&fNull, "CONOUT$", "w", stdout);
+	freopen_s(&fNull, "CONOUT$", "w", stderr);
+
+	std::string consoleName = "UESigPatch Console";
+	HANDLE Console = GetStdHandle(STD_OUTPUT_HANDLE);
+	DWORD dwMode = 0;
+	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+
+	SetConsoleTitleA(consoleName.c_str());
+	GetConsoleMode(Console, &dwMode);
+	SetConsoleMode(Console, dwMode);
+
+	std::streambuf* coutbuf = std::cout.rdbuf();
+	std::cout.rdbuf(coutbuf);
+}
+
 bool Initialize()
 {
 	const char* pSigCheck;
@@ -25,6 +52,9 @@ bool Initialize()
 	const char* pChunkSigCheck;
 	const char* pChunkSigCheckFunc;
 	const char* pTOCCheck;
+
+	if (bPauseOnStart) MessageBoxA(0, "Pausing execution, attach your debugger now.", "UESigPatch", MB_ICONINFORMATION);
+	if (bShowConsole) CreateConsole();
 
 	switch (GetEnumeratorFromProcessName(GetProcessName())) {
 		case eGameBramble:
