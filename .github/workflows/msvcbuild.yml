@@ -1,0 +1,52 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+    - "**.cpp"
+    - "**.h"
+  workflow_dispatch:
+
+env:
+  PROJECT_NAME: UESigPatch
+  SOLUTION_FILE_PATH: .\UESigPatch\UESigPatch.sln
+  BUILD_CONFIGURATION: Release
+  PLATFORM: x64
+
+jobs:
+  build:
+    runs-on: windows-2022
+    
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout Code
+    - uses: actions/checkout@v3
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Get Version
+      id: version
+      run: |
+        $name = "${{env.PROJECT_NAME}}"
+        $VERSION=Select-String -Path .\$name\dllmain.cpp -Pattern "constexpr .* ASI_VERSION ?="
+        $VERSION=[regex]::Match($VERSION, '\d+(\.\d+){1,}').Value
+        echo "current_version=$VERSION" >> $env:GITHUB_OUTPUT
+    
+    - name: Build UESigPatch
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: msbuild /m .\${{env.PROJECT_NAME}}\${{env.PROJECT_NAME}}.sln /p:Configuration=${{env.BUILD_CONFIGURATION}} /p:Platform=${{env.PLATFORM}}
+
+    - name: Create GitHub Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: .\${{env.PROJECT_NAME}}\${{env.Platform}}\${{env.BUILD_CONFIGURATION}}\${{env.PROJECT_NAME}}.asi
+        name: ${{env.PROJECT_NAME}} v${{env.PROJECT_VERSION}}
+        tag_name: v${{env.PROJECT_VERSION}}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PROJECT_VERSION: ${{ steps.version.outputs.current_version }}
