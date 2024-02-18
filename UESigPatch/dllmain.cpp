@@ -4,7 +4,7 @@
 #include "utils.h"
 #include <string>
 
-constexpr const char* ASI_VERSION = "1.0.1";
+constexpr const char* ASI_VERSION = "1.1.0";
 
 bool bPauseOnStart = false;
 bool bShowConsole = false;
@@ -13,6 +13,7 @@ enum eSupportedGames {
 	eGameBramble,
 	eGameMK12,
 	eGameSifu,
+	eGameSuicideSquad,
 	eUnsupportedGame
 };
 
@@ -20,6 +21,7 @@ eSupportedGames GetEnumeratorFromProcessName(std::string const& sProcessName) {
 	if (sProcessName == "Bramble_TMK-Win64-Shipping.exe") return eGameBramble;
 	if (sProcessName == "MK12.exe") return eGameMK12;
 	if (sProcessName == "Sifu-Win64-Shipping.exe") return eGameSifu;
+	if (sProcessName == "SuicideSquad_KTJL.exe") return eGameSuicideSquad;
 	return eUnsupportedGame;
 }
 
@@ -52,6 +54,7 @@ bool Initialize()
 	const char* pChunkSigCheck;
 	const char* pChunkSigCheckFunc;
 	const char* pTOCCheck;
+	const char* pTOCCompare;
 
 	if (bPauseOnStart) MessageBoxA(0, "Pausing execution, attach your debugger now.", "UESigPatch", MB_ICONINFORMATION);
 	if (bShowConsole) CreateConsole();
@@ -93,6 +96,14 @@ bool Initialize()
 			DisableSignatureCheck(pSigCheck);
 			DisableChunkSigCheck(pChunkSigCheck, pChunkSigCheckFunc);
 
+			break;
+
+		case eGameSuicideSquad:
+			// Necessary patch explained by @thethiny
+			pTOCCompare = "44 39 A5 ? ? 00 00 0F 85 ? ? ? ? 44";
+
+			DisableTOCCompare(pTOCCompare);
+			
 			break;
 
 		case eUnsupportedGame:
