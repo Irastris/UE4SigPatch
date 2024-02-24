@@ -1,5 +1,5 @@
 # UESigPatch
-UESigPatch is an ASI plugin with the intent of patching signature checks and subsequently enabling content mods for an increasing number of Unreal Engine 4/5 games, based on the incredible work of [@thethiny](https://github.com/thethiny).
+UESigPatch is an ASI plugin with the intent of patching signature checks and subsequently enabling content mods for an increasing number of Unreal Engine 4/5 games, based on the incredible work of [@thethiny](https://github.com/thethiny) and [@ermaccer](https://github.com/ermaccer).
 
 ### Disclaimer:
 Usage of UESigPatch with games, especially in regard to those which implement any form of online services, is entirely at the risk of the end user. No warranty is provided and UESigPatch's contributors can not be held responsible for damages resulting from its (mis)use, violation of relevant Terms of Service agreements, or any other action. **YOU HAVE BEEN WARNED!**
