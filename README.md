@@ -13,7 +13,7 @@ Download the compiled ASI from the [latest release](https://github.com/Irastris/
  - Mortal Kombat 1 (by [@thethiny](https://github.com/thethiny))
  - Sifu
  - SOUTH PARK: SNOW DAY!
- - Suicide Squad: Kill The Justice League [^1] [^2]
+ - ~Suicide Squad: Kill The Justice League [^1] [^2]~ (EAC is now verified, rendering UESigPatch incompatible)
 
 [^1]: Supported games which direct to this footnote require disabling anti-cheat services, explanations for doing so will not be provided.
 [^2]: Supported games which direct to this footnote require adding `-fileopenlog` to your launch parameters.
