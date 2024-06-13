@@ -36,12 +36,12 @@ bool DisableChunkSigCheck(const char* pChunkSigCheck, const char* pChunkSigCheck
 	return true;
 }
 
-bool DisableTOCSigCheck(const char* pTOCCheck)
+bool DisableTOCSigCheck(const char* pTOCCheck, uint32_t offset)
 {
 	uint64_t* lpTocSigCheckPattern = FindPattern(GetModuleHandleA(NULL), pTOCCheck);
 	std::cout << "lpTocSigCheckPattern " << (lpTocSigCheckPattern ? "Patched" : "FAILED") << "\n";
 	if (!lpTocSigCheckPattern) return false;
-	ConditionalJumpToJump((uint64_t)lpTocSigCheckPattern, 0x12);
+	ConditionalJumpToJump((uint64_t)lpTocSigCheckPattern, offset);
 	return true;
 }
 

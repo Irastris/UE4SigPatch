@@ -10,10 +10,11 @@ Download the compiled ASI from the [latest release](https://github.com/Irastris/
 ### Supported Games:
  - Asterigos: Curse of the Stars
  - Bramble: The Mountain King
+ - ~Killer Klowns from Outer Space [^1]~ (EAC is now verified server-side rendering UESigPatch useless)
  - Mortal Kombat 1 (by [@thethiny](https://github.com/thethiny))
  - Sifu
  - SOUTH PARK: SNOW DAY!
- - ~Suicide Squad: Kill The Justice League [^1] [^2]~ (EAC is now verified, rendering UESigPatch incompatible)
+ - ~Suicide Squad: Kill The Justice League [^1] [^2]~ (EAC is now verified server-side rendering UESigPatch useless)
 
 [^1]: Supported games which direct to this footnote require disabling anti-cheat services, explanations for doing so will not be provided.
 [^2]: Supported games which direct to this footnote require adding `-fileopenlog` to your launch parameters.

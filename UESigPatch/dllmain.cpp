@@ -4,7 +4,7 @@
 #include "utils.h"
 #include <string>
 
-constexpr const char* ASI_VERSION = "1.3.0";
+constexpr const char* ASI_VERSION = "1.4.0";
 
 bool bPauseOnStart = false;
 bool bShowConsole = false;
@@ -12,6 +12,7 @@ bool bShowConsole = false;
 enum eSupportedGames {
 	eGameAsterigos,
 	eGameBramble,
+	eGameKKFOS,
 	eGameMK12,
 	eGameSifu,
 	eGameSouthPark,
@@ -22,6 +23,7 @@ enum eSupportedGames {
 eSupportedGames GetEnumeratorFromProcessName(std::string const& sProcessName) {
 	if (sProcessName == "Genesis-Win64-Shipping.exe") return eGameAsterigos;
 	if (sProcessName == "Bramble_TMK-Win64-Shipping.exe") return eGameBramble;
+	if (sProcessName == "Diony.exe") return eGameKKFOS;
 	if (sProcessName == "MK12.exe") return eGameMK12;
 	if (sProcessName == "Sifu-Win64-Shipping.exe") return eGameSifu;
 	if (sProcessName == "SnowDay-Win64-Shipping.exe") return eGameSouthPark;
@@ -72,7 +74,7 @@ bool Initialize()
 
 			DisableSignatureCheck(pSigCheck);
 			DisableChunkSigCheck(pChunkSigCheck, pChunkSigCheckFunc);
-			DisableTOCSigCheck(pTOCCheck);
+			DisableTOCSigCheck(pTOCCheck, 0x12);
 
 			break;
 
@@ -84,7 +86,19 @@ bool Initialize()
 
 			DisableSignatureCheck(pSigCheck);
 			DisableChunkSigCheck(pChunkSigCheck, pChunkSigCheckFunc);
-			DisableTOCSigCheck(pTOCCheck);
+			DisableTOCSigCheck(pTOCCheck, 0x12);
+
+			break;
+
+		case eGameKKFOS:
+			pSigCheck = "EC 20 ? ? ? ? 00 49 8B F0 48 8B FA 48 8B D9 75 51";
+			pChunkSigCheck = "0F B6 51 ? 48 8B F1 48 8B 0D ? ? ? ? E8 ? ? ? ? C6 46 ? ? 0F AE F8";
+			pChunkSigCheckFunc = "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 56 41 57 48 83 EC 20 48 8D 59 08 49 63 F9 48 8B F1 49 8B E8 48 8B CB 44 0F B6 FA";
+			pTOCCheck = "4D 8B CE 45 33 C0 E8 ? ? ? ? 39 B5 ? ? ? ? 0F 84";
+
+			DisableSignatureCheck(pSigCheck);
+			DisableChunkSigCheck(pChunkSigCheck, pChunkSigCheckFunc);
+			DisableTOCSigCheck(pTOCCheck, 0x11);
 
 			break;
 
@@ -100,7 +114,7 @@ bool Initialize()
 			DisableSignatureCheck(pSigCheck);
 			DisableSignatureWarn(pSigWarn);
 			DisableChunkSigCheck(pChunkSigCheck, pChunkSigCheckFunc);
-			DisableTOCSigCheck(pTOCCheck);
+			DisableTOCSigCheck(pTOCCheck, 0x12);
 
 			break;
 
