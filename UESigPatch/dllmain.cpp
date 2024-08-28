@@ -4,7 +4,7 @@
 #include "utils.h"
 #include <string>
 
-constexpr const char* ASI_VERSION = "1.5.0";
+constexpr const char* ASI_VERSION = "1.5.1";
 
 bool bPauseOnStart = false;
 bool bShowConsole = false;
@@ -150,7 +150,7 @@ bool Initialize()
 
 		case eGameSuicideSquad:
 			// Necessary patch explained by @thethiny
-			pTOCCompare = "44 39 A5 ? ? 00 00 0F 85 ? ? ? ? 8B 43";
+			pTOCCompare = "44 39 A5 ? ? 00 00 0F 85 ? ? ? ? 44 39 63 1C";
 
 			DisableTOCCompare(pTOCCompare);
 			
