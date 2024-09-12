@@ -10,6 +10,7 @@ Download the compiled ASI from the [latest release](https://github.com/Irastris/
 ### Supported Games:
  - Asterigos: Curse of the Stars
  - Bramble: The Mountain King
+ - Harry Potter Quidditch Champions
  - Mortal Kombat 1 (by [@thethiny](https://github.com/thethiny))
  - Sifu
  - SOUTH PARK: SNOW DAY!
