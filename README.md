@@ -21,4 +21,4 @@ Download the compiled ASI from the [latest release](https://github.com/Irastris/
 ### Known Limitations:
 At this time, this new UESigPatch V2 has no wildcards for any of its AOBs. This means that any game updates which affect the executable are highly likely to result in UESigPatch needing an update as well. A solution for this is being researched.
 
-[^1]: The supported games list represents compatibility as it stood on <t:1733081664:D>. Any subsequent games updates may result in this list no longer being accurate.
+[^1]: The supported games list represents compatibility as it stood on December 1st, 2024. Any subsequent games updates may result in this list no longer being accurate.
