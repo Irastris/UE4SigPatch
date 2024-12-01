@@ -1,3 +1,7 @@
 .vs
 UESigPatch/x64
 desktop.ini
+NOTES.md
+
+# Dumper-7 files, excluded until type 2 functions are supported
+UESigPatch/sdk
