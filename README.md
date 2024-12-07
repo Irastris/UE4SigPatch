@@ -17,6 +17,7 @@ Download the compiled ASI from the [latest release](https://github.com/Irastris/
  - inZOI Character Studio Demo
  - Mortal Kombat 1
  - Sifu
+ - Slackers - Carts of Glory
 
 ### Known Limitations:
 At this time, this new UESigPatch V2 has no wildcards for any of its AOBs. This means that any game updates which affect the executable are highly likely to result in UESigPatch needing an update as well. A solution for this is being researched.
