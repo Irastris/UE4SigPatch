@@ -20,6 +20,7 @@ const char* GetPatternFromExecutableName() {
 	if (path == "Bramble_TMK-Win64-Shipping.exe") return		"48 83 EC 28 65 48 8B 04 25 58 00 00 00 8B 0D 15 D3 E2 03 BA 08 01 00 00";
 	if (path == "BlueClient-Win64-Shipping.exe") return			"48 83 EC 28 65 48 8B 04 25 58 00 00 00 8B 0D 29 4C F6 08 BA 04 11 00 00";
 	if (path == "b1-Win64-Shipping.exe") return					"48 83 EC 28 65 48 8B 04 25 58 00 00 00 8B 0D 45 CB 64 11 BA 1C 04 00 00";
+	if (path == "CartOfGlory-Win64-Shipping.exe") return		"48 83 EC 28 65 48 8B 04 25 58 00 00 00 8B 0D 05 1C D7 03 BA 08 01 00 00";
 	if (path == "Genesis-Win64-Shipping.exe") return			"48 83 EC 28 65 48 8B 04 25 58 00 00 00 8B 0D FD E2 41 04 BA 08 01 00 00";
 	if (path == "MK12.exe") return								"48 83 EC 28 65 48 8B 04 25 58 00 00 00 8B 0D C5 E4 70 05 BA 40 01 00 00";
 	if (path == "ProjectBakery-Win64-Shipping.exe") return		"48 83 EC 28 65 48 8B 04 25 58 00 00 00 8B 0D 69 6C 7E 06 BA 6C 0E 00 00";
