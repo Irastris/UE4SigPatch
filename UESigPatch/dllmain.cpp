@@ -11,7 +11,7 @@
 // #include "SDK/Basic.hpp"
 // using namespace SDK;
 
-constexpr const char* ASI_VERSION = "2.0.1";
+constexpr const char* ASI_VERSION = "2.0.2";
 
 bool bPauseOnStart = false;
 bool bShowConsole = false;
