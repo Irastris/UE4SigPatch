@@ -25,4 +25,4 @@ At this time, this new UESigPatch V2 has no wildcards for any of its AOBs. This 
 
 [^1]: Compatibility with this game was last checked on December 1st, 2024. Any subsequent updates that may have released since then may result in incompatibility. If this is the case, please open an issue.
 [^2]: Compatibility with this game was last checked on December 6th, 2024. Any subsequent updates that may have released since then may result in incompatibility. If this is the case, please open an issue.
-[^3]: Compatibility with this game was last checked on January 10th, 2025. Any subsequent updates that may have released since then may result in incompatibility. If this is the case, please open an issue.
+[^3]: Compatibility with this game was last checked on January 25th, 2025. Any subsequent updates that may have released since then may result in incompatibility. If this is the case, please open an issue.
